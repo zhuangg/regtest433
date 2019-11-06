@@ -909,12 +909,15 @@
             $('textarea').blur()
         });
 	$('.unscroll').on('touchstart',function (e) {
-            e.preventDefault()
+            e.preventDefault();
+		e.stopPropagation();
         });
         	$('input').on('tap',function () {
+			e.target.scrollIntoView(false);
             $(this).focus()
         });	  
 	    $('textarea').on('tap',function () {
+		    e.target.scrollIntoView(false);
             $(this).focus()
         });	
         
