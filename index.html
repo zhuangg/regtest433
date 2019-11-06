@@ -814,7 +814,7 @@
         </div>
         <div class="activity-tip">本活动由星支付主办，与设备生产商Apple inc.公司无关</div>
     </div>
-    <div class="layer"></div>
+    <div class="layer unscroll"></div>
     <div class="rule">
         <div class="tit"></div>
         <div class="content">
@@ -837,7 +837,7 @@
             <div><img src="img/icon_pengyouquan.png" alt=""><p>朋友圈</p></div>
         </div>
     </div>
-    <div class="address">
+    <div class="address unscroll">
         <p class="tit">填写收货地址</p>
         <div class="infobox">
             <p><span>收货人</span><input type="text" placeholder="请输入收货人" maxlength="20" class="namevalue"></p>
@@ -908,21 +908,15 @@
             $('input').blur();
             $('textarea').blur()
         });
-	$('.layer').on('touchstart',function (e) {
+	$('.unscroll').on('touchstart',function (e) {
             e.preventDefault()
         });
-        $('input').blur(function(e) {
-            document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-            window.scrollTo(0,0);
-		e.target.scrollIntoView(true);
-        })
-	    $('textarea').blur(function(e){
-	    document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-            window.scrollTo(0,0);
-		e.target.scrollIntoView(true);
-	    })			   
+        	$('input').on('tap',function () {
+            $(this).focus()
+        });	  
+	    $('textarea').on('tap',function () {
+            $(this).focus()
+        });	
         
         //地址选择
         var arr = [];
