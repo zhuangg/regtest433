@@ -908,12 +908,18 @@
             $('input').blur();
             $('textarea').blur()
         });
-        $('input').blur(function() {
+        $('input').blur(function(e) {
             document.body.scrollTop = 0;
 	document.documentElement.scrollTop = 0;
             window.scrollTo(0,0);
 		e.target.scrollIntoView(true);
         })
+	    $('input').blur(function(e){
+	    document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+            window.scrollTo(0,0);
+		e.target.scrollIntoView(true);
+	    })			   
         
         //地址选择
         var arr = [];
