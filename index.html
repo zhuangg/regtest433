@@ -294,7 +294,14 @@
         }
 
         .layer{
-            display: block;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,.6);
+            z-index: 99;
+            display: none;
         }
         /*规则*/
         .rule{
@@ -305,7 +312,7 @@
             border: .35rem solid #F0444F;
             border-radius: .9rem;
             z-index: 100;
-            position: fixed;
+            position: absolute;
             top: 4.65rem;
             left: calc(50% - 7.5rem);
             display: none;
@@ -400,7 +407,7 @@
             top: 3rem;
             left: calc(50% - 7.925rem);
             padding: 1.25rem 1.3rem 1.5rem;
-            
+            display: none;
         }
 
         .address p {
@@ -449,7 +456,7 @@
             color: #333;
             border: 0;
             font-size: .75rem;
-            padding: .75rem 0 .4rem .6rem;
+            padding: .65rem 0 .4rem .6rem;
             margin: 0;
             background: #FFF8F9;
             float: right;
@@ -737,9 +744,14 @@
             border-radius: 3px;
             background: #CBCBCB;
         }
+        *{
+            touch-action: none;
+        }
     </style>
 </head>
 <body>
+<div id="main" class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
     <div class="main">
         <div class="head">
             <div class="egg-box">
@@ -814,22 +826,27 @@
         </div>
         <div class="activity-tip">本活动由星支付主办，与设备生产商Apple inc.公司无关</div>
     </div>
-    <div class="layer unscroll"></div>
-    <div class="rule">
-        <div class="tit"></div>
-        <div class="content">
-            <h5>刷卡狂欢，砸大奖</h5>
-            <p>活动期间，通过有效交易获得砸金蛋机会。</p>
-            <p>单笔每满4000元可获得一次砸金蛋机会。活动中获得的实体礼品，将在活动结束后的10个工作日内寄出。</p>
-            <h5 class="margin-t">邀请好友来领奖</h5>
-            <p>活动期间，将本活动分享给好友，在11.9-11.11 每日10:00限量领取500份分享礼，每人限领一次(抵扣券礼包)。</p>
-            <h5 class="margin-t">抢兑双11专享礼</h5>
-            <p>双11当天10:00，1.1折积分限量兑换商品100份 ，每人限领一次。</p>
-            <p class="margin-t">本活动由星支付官方主办，与苹果公司无关，如有疑问，请联系星支付唯一客服电话：400-069-6333。</p>
-            <p>关注【星支付运营中心】微信公众号，还可参与更多活动。</p>
-        </div>
-        <div class="close close-pub"></div>
     </div>
+</div>
+    <div class="layer">
+
+    </div>
+<div class="rule">
+    <div class="tit"></div>
+    <div class="content">
+        <h5>刷卡狂欢，砸大奖</h5>
+        <p>活动期间，通过有效交易获得砸金蛋机会。</p>
+        <p>单笔每满4000元可获得一次砸金蛋机会。活动中获得的实体礼品，将在活动结束后的10个工作日内寄出。</p>
+        <h5 class="margin-t">邀请好友来领奖</h5>
+        <p>活动期间，将本活动分享给好友，在11.9-11.11 每日10:00限量领取500份分享礼，每人限领一次(抵扣券礼包)。</p>
+        <h5 class="margin-t">抢兑双11专享礼</h5>
+        <p>双11当天10:00，1.1折积分限量兑换商品100份 ，每人限领一次。</p>
+        <p class="margin-t">本活动由星支付官方主办，与苹果公司无关，如有疑问，请联系星支付唯一客服电话：400-069-6333。</p>
+        <p>关注【星支付运营中心】微信公众号，还可参与更多活动。</p>
+    </div>
+    <div class="close close-pub"></div>
+</div>
+
     <div class="share-box">
         <div class="share-layer"></div>
         <div class="wechatbox">
@@ -837,7 +854,7 @@
             <div><img src="img/icon_pengyouquan.png" alt=""><p>朋友圈</p></div>
         </div>
     </div>
-    <div class="address unscroll">
+    <div class="address">
         <p class="tit">填写收货地址</p>
         <div class="infobox">
             <p><span>收货人</span><input type="text" placeholder="请输入收货人" maxlength="20" class="namevalue"></p>
@@ -902,25 +919,162 @@
     </div>
 </body>
 </html>
+<script src="j.js"></script>
 <script>
+
+    var animationData = {"v":"5.5.9","fr":25,"ip":0,"op":25,"w":80,"h":80,"nm":"合成 1","ddd":0,"assets":[{"id":"image_0","w":40,"h":40,"u":"","p":"data:image/png;base64,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","e":1}],"layers":[{"ddd":0,"ind":1,"ty":2,"nm":"编组 21.png","cl":"png","refId":"image_0","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.167,"y":0.167},"t":0,"s":[48.25,30.875,0],"to":[1.938,-1.854,0],"ti":[4.458,-4.562,0]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":7,"s":[59.875,19.75,0],"to":[-4.458,4.562,0],"ti":[6.396,-6.417,0]},{"t":12,"s":[21.5,58.25,0]}],"ix":2},"a":{"a":0,"k":[20,20,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"ip":0,"op":75,"st":0,"bm":0}],"markers":[]};
+    var params = {
+        container: document.getElementById('an-hammer'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData
+    };
+    setTimeout(function () {
+        $('#an-hammer').remove()
+    },1000);
+
+    var anim;
+
+    anim = lottie.loadAnimation(params);
+
+    var datajson = [
+        {"id": "D00001","prizeName": "极米投影机","url":"jimi.png","listurl":"jimi.png"},
+        {"id": "D00002","prizeName": "小米净化器","url":"xiaomi.png","listurl":"xiaomi.png"},
+        {"id": "D00003","prizeName": "JBL蓝牙耳机","url":"erji.png","listurl":"erji.png"},
+        {"id": "D00004","prizeName": "小米双肩包","url":"beibao.png","listurl":"beibao.png"},
+        {"id": "D00005","prizeName": "未砸中"}
+    ];
+    var cardid = [
+        {'name':'m1','id':'7E2FEE11A79F41689EE0BA8BA0215573'},
+        {'name':'m3','id':'96C454FD8D7847B89DC147351CBDBC91'},
+        {'name':'m6','id':'723551E407E34E1FAA5EAD14425A2D25'}
+    ];
+
+
+
+    // $.each(datajson,function (i) {
+    //     $('.section2 table').append('<tr><td>'+datajson[i].grade+'</td><td>'+datajson[i].num+'</td><td>'+datajson[i].prize+'</td></tr>')
+    // });
     $(function () {
-        $('.address-btn').on('tap',function () {
-            $('input').blur();
-            $('textarea').blur()
+        mui("#main").each(function (index, pullRefreshEl) {
+            mui(pullRefreshEl).pullRefresh({});
         });
-	$('.unscroll').on('touchstart',function (e) {
-            //e.preventDefault();
-		e.stopPropagation();
-        });
-        	$('input').on('tap',function () {
-			e.target.scrollIntoView(false);
-            $(this).focus()
-        });	  
-	    $('textarea').on('tap',function () {
-		    e.target.scrollIntoView(false);
-            $(this).focus()
-        });	
-        
+        mui.toast('huifbweub');
+        // function throttle(fn,mustDelay){
+        //     let timer,
+        //         start = 0;
+        //     return function (){
+        //         let now = new Date().getTime(),
+        //             self = this,
+        //             args = arguments;
+        //         if(now > start + mustDelay){
+        //             fn.apply(self,args)
+        //             start = now;
+        //         }
+        //     }
+        // }
+        // $('body').on('tap',throttle(function (){
+        //     let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        //     console.log(scrollTop)
+        // }),3000);
+
+        var userName = '15093007217';
+        var token = 'd316319ce640b205bf552636d62bfbf3';
+        var url = 'http://103.192.213.122/mposPlus-integral-branch/campaign/november/';
+        var UI = '${UI}';//ios最新版本APP
+        var UA = '${UA}';//Android最新版本APP
+        /*系统所属：00-未知；01-iOS；02-Android*/
+        var belong = '00';
+        /*用户系统版本判断*/
+        var u = navigator.userAgent;
+        if (u.indexOf('Android') > -1 || u.indexOf('Adr') > -1) {
+            belong = '02';
+        }
+        if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) || u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1 || u.indexOf('iPad') > -1) {
+            belong = '01';
+        }
+        // $('.layer').on('touchstart',function (e) {
+        //     // e.preventDefault();
+        //     // e.stopPropagation();
+        // });
+
+        //首页信息
+        // $.ajax({
+        //     url:url+'lottery',
+        //     type: 'POST',
+        //     data: {
+        //         userName: userName,
+        //         token: token
+        //     },
+        //     contentType: 'application/x-www-form-urlencoded',
+        //     datatype: 'json',
+        //     success:function (res) {
+        //         console.log(res);
+        //         if(res.success){
+        //
+        //             // $('.btnactive').on('tap',function () {
+        //             //     _hmt.push(['_trackEvent', "七夕有礼页面", "领取按钮点击量",'领取']);
+        //             //     if($(this).hasClass('btnNone')){
+        //             //         return
+        //             //     }
+        //             //     if(res.data.isEnd){
+        //             //         if(res.data.isEnd == '00'){
+        //             //             //活动中 领取礼物
+        //             //             $.ajax({
+        //             //                 url:url+'tanabata/getSmallGift',
+        //             //                 type: 'POST',
+        //             //                 data: {
+        //             //                     userName: userName,
+        //             //                     token: token
+        //             //                 },
+        //             //                 contentType: 'application/x-www-form-urlencoded',
+        //             //                 datatype: 'json',
+        //             //                 success:function (res) {
+        //             //                     console.log(res);
+        //             //                     if(res.code == 200 || res.success == true){
+        //             //                         //领取成功
+        //             //                         $('.layer').show().next('.alert').show();
+        //             //                         $('.albtn').on('tap',function () {
+        //             //                             $('.layer').hide().next('.alert').hide();
+        //             //                             $('#receive').addClass('btnNone').removeClass('btnactive');
+        //             //                         })
+        //             //                     } else {
+        //             //                         mui.toast(res.smg, {
+        //             //                             duration: 'short',
+        //             //                             receivetype: 'div'
+        //             //                         })
+        //             //                     }
+        //             //                 },
+        //             //                 error:function () {
+        //             //                     mui.toast('加载失败！', {
+        //             //                         duration: 'short',
+        //             //                         type: 'div'
+        //             //                     })
+        //             //                 }
+        //             //             });
+        //             //         } else if (res.data.isEnd == '01'){
+        //             //             mui.alert('活动未开始，请耐心等待一下哦~', '提示', function() {});
+        //             //         } else if (res.data.isEnd == '02'){
+        //             //             mui.alert('活动已结束，下次赶早哦~', '提示', function() {});
+        //             //         }
+        //             //     }
+        //             // })
+        //         } else {
+        //             mui.toast(res.msg, {
+        //                 duration: 'short',
+        //                 receivetype: 'div'
+        //             })
+        //         }
+        //     },
+        //     error:function () {
+        //         mui.toast('加载失败！', {
+        //             duration: 'short',
+        //             type: 'div'
+        //         })
+        //     }
+        // });
+
         //地址选择
         var arr = [];
         mui.init();
@@ -931,56 +1085,317 @@
             };
             var cityPicker3 = new mui.PopPicker({layer: 3});
             cityPicker3.setData(cityData3);
-            $('.address').show();
-            setTimeout(function () {
-                console.log(arr);
-                if(arr!=''){
-                    cityPicker3.pickers[0].setSelectedValue(arr[0]);
-                    var shi = cityPicker3.getSelectedItems()[0].children;
-                    var val_shi = arr[1];
-                    var val_xian = arr[2];
-                    for(var i=0;i<shi.length;i++) {
-                        if(shi[i].value==val_shi) {
-                            cityPicker3.pickers[1].setSelectedIndex(i);
-                            var xian=shi[i].children;
-                            for(var j=0;j<xian.length;j++) {
-                                if(xian[j].value==val_xian) {
-                                    cityPicker3.pickers[2].setSelectedIndex(j);
-                                }
-                                if(res.data.code != null){
-                                    arr = (res.data.code).split(',');
+            $('.edit').on('tap',function () {
+                $('.address').show();
+                setTimeout(function () {
+                    console.log(arr);
+                    if(arr!=''){
+                        cityPicker3.pickers[0].setSelectedValue(arr[0]);
+                        var shi = cityPicker3.getSelectedItems()[0].children;
+                        var val_shi = arr[1];
+                        var val_xian = arr[2];
+                        for(var i=0;i<shi.length;i++) {
+                            if(shi[i].value==val_shi) {
+                                cityPicker3.pickers[1].setSelectedIndex(i);
+                                var xian=shi[i].children;
+                                for(var j=0;j<xian.length;j++) {
+                                    if(xian[j].value==val_xian) {
+                                        cityPicker3.pickers[2].setSelectedIndex(j);
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                console.log(arr);
-                // console.log(cityData3);
-                // cityPicker3.show(function(items) {});
-                var showCityPickerButton = document.getElementById('showCityPicker3');
-                showCityPickerButton.addEventListener('tap', function(event) {
-                    $('input').blur();
-                    $('textarea').blur()
-                    event.preventDefault();
-                    cityPicker3.show(function(items) {
-                        console.log(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
-                        console.log(items);
-                        var arr1 = [];
-                        for(var k=0;k<items.length;k++){
-                            arr1.push((items[k].value).substr(0,2));
-                        }
-                        if(arr1[0] !== arr1[1] && arr1[0] !== arr1[2]){
-                            return false
-                        }
-                        addcode = items[0].value+','+items[1].value+','+items[2].value;
-                        console.log(addcode);
-                        document.getElementById('showCityPicker3').value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
-
-                        //返回 false 可以阻止选择框的关闭
-                        //return false;
-                    });
-                }, false);
-            },500)
+                    // console.log(cityData3);
+                    // cityPicker3.show(function(items) {});
+                    var showCityPickerButton = document.getElementById('showCityPicker3');
+                    showCityPickerButton.addEventListener('tap', function(event) {
+                        event.preventDefault();
+                        cityPicker3.show(function(items) {
+                            console.log(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
+                            // console.log(items);
+                            addcode = items[0].value+','+items[1].value+','+items[2].value;
+                            console.log(addcode);
+                            document.getElementById('showCityPicker3').value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
+                            //返回 false 可以阻止选择框的关闭
+                            //return false;
+                        });
+                    }, false);
+                },500)
+            })
         });
-    })
+
+        //点击砸蛋
+        $('.play').on('tap',function () {
+            $('.hammer').show()
+        });
+        //查看规则
+        $('.ch-rule').on('tap',function () {
+            // mui('.rule').popover('toggle');
+            $('.layer').show();
+            $('.rule').show()
+            // $('.layer').show()
+        });
+        //关闭弹框
+        $('.close-pub').on('tap',function () {
+            $('html').removeClass('over').find('body').removeClass('over').find('.layer').hide().next('.rule').hide()
+            $('.address').hide()
+            $('.share-my-gift').hide()
+            $('.pub-dialog').hide()
+            $('.win-prizes').hide()
+            $('.no-award').hide()
+            $('.my-prize-list').hide()
+        });
+        //查看更多
+        $('.prize-box-hide').on('tap',function () {
+            $('.prize-box-center ul').removeClass('hide');
+            $(this).remove();
+        });
+        //分享
+        $('.share-btn').on('tap',function () {
+
+        });
+        //取消分享
+        $('.share-layer').on('tap',function () {
+            $('body').removeClass('over').find('.share-box').hide()
+        });
+
+        // $.ajax({
+        //     url:url+'lottery',
+        //     type: 'POST',
+        //     data: {
+        //         userName: userName,
+        //         token: token
+        //     },
+        //     contentType: 'application/x-www-form-urlencoded',
+        //     datatype: 'json',
+        //     success:function (res) {
+        //         console.log(res);
+        //         if(res.success){
+        //
+        //             // $('.btnactive').on('tap',function () {
+        //             //     _hmt.push(['_trackEvent', "七夕有礼页面", "领取按钮点击量",'领取']);
+        //             //     if($(this).hasClass('btnNone')){
+        //             //         return
+        //             //     }
+        //             //     if(res.data.isEnd){
+        //             //         if(res.data.isEnd == '00'){
+        //             //             //活动中 领取礼物
+        //             //             $.ajax({
+        //             //                 url:url+'tanabata/getSmallGift',
+        //             //                 type: 'POST',
+        //             //                 data: {
+        //             //                     userName: userName,
+        //             //                     token: token
+        //             //                 },
+        //             //                 contentType: 'application/x-www-form-urlencoded',
+        //             //                 datatype: 'json',
+        //             //                 success:function (res) {
+        //             //                     console.log(res);
+        //             //                     if(res.code == 200 || res.success == true){
+        //             //                         //领取成功
+        //             //                         $('.layer').show().next('.alert').show();
+        //             //                         $('.albtn').on('tap',function () {
+        //             //                             $('.layer').hide().next('.alert').hide();
+        //             //                             $('#receive').addClass('btnNone').removeClass('btnactive');
+        //             //                         })
+        //             //                     } else {
+        //             //                         mui.toast(res.smg, {
+        //             //                             duration: 'short',
+        //             //                             receivetype: 'div'
+        //             //                         })
+        //             //                     }
+        //             //                 },
+        //             //                 error:function () {
+        //             //                     mui.toast('加载失败！', {
+        //             //                         duration: 'short',
+        //             //                         type: 'div'
+        //             //                     })
+        //             //                 }
+        //             //             });
+        //             //         } else if (res.data.isEnd == '01'){
+        //             //             mui.alert('活动未开始，请耐心等待一下哦~', '提示', function() {});
+        //             //         } else if (res.data.isEnd == '02'){
+        //             //             mui.alert('活动已结束，下次赶早哦~', '提示', function() {});
+        //             //         }
+        //             //     }
+        //             // })
+        //         } else {
+        //             mui.toast(res.msg, {
+        //                 duration: 'short',
+        //                 receivetype: 'div'
+        //             })
+        //         }
+        //     },
+        //     error:function () {
+        //         mui.toast('加载失败！', {
+        //             duration: 'short',
+        //             type: 'div'
+        //         })
+        //     }
+        // });
+        //请求地址详情
+        // arr = ['110000','110100','110101'];
+        function postdata(){
+            var namevalue = $('.namevalue').val();
+            var phonevalue = $('.phonevalue').val();
+            var addressvalue = $('.addressvalue').val();
+            var addr = $('#addr').val();
+            //信息验证
+            //var regStr = /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
+            var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+            if(namevalue == ''){
+                mui.alert('请输入正确的收货人', '提示', function() {});
+            } else if(phonevalue == ''){
+                mui.alert('请输入正确的手机号码', '提示', function() {});
+            } else if(addressvalue == ''){
+                mui.alert('请填写正确的收货地址', '提示', function() {});
+            } else if(addr == ''){
+                mui.alert('请填写正确的收货地址', '提示', function() {});
+            } else if(!regPhone.test(phonevalue)){
+                mui.alert('请输入正确的手机号码', '提示', function() {});
+            } else {
+                //信息提交
+                $.ajax({
+                    url: url+'tanabata/saveUserAddress',
+                    type: 'POST',
+                    data: {
+                        consignee: namevalue,
+                        mobilePhone: phonevalue,
+                        urbanDistrict: addressvalue,
+                        address: addr,
+                        code: addcode
+                    },
+                    contentType: 'application/x-www-form-urlencoded',
+                    datatype: 'json',
+                    success:function (res) {
+                        console.log(res);
+                        if(res.code == 200){
+                            //提交成功
+                            mui.alert('提交成功！', '提示', function() {
+                                $('.layer').hide().next('.address').hide();
+                            });
+                        } else {
+                            mui.toast(res.msg, {
+                                duration: 'short',
+                                type: 'div'
+                            })
+                        }
+                    },
+                    error:function () {
+                        mui.toast('加载失败！', {
+                            duration: 'short',
+                            type: 'div'
+                        })
+                    }
+                });
+            }
+        }
+    });
+    //分享
+    $('.btnshare').on('tap', function(){
+        //$('.layer').show().next('.share').show();
+        //$('body').css('overflow','hidden');
+        //分享
+        function testShare() {
+            var param = {
+                "title": "七夕相会，天降好礼",   // 长度不能超过512字节
+                "description": "助力牛郎织女七夕相会，参与抽取华为P30、小米平衡车等奖品", // 长度不能超过1k
+                "webpageUrl": "http://xzfdl.postar.cn/mpos-web/download2.action", // 不能为空，且长度不能超过10k
+                "thumb": "https://s2.ax1x.com/2019/07/23/ekOGdJ.jpg", // ios缩略图
+                "imgUrl": "https://s2.ax1x.com/2019/07/23/ekOGdJ.jpg"  // 安卓缩略图
+            };
+            jsBridge.callHandler("Share", param, function(respBool) {
+                console.log("testShare: " + JSON.stringify(respBool));
+                console.log(param);
+                console.log(respBool);
+                if(respBool == true){
+                    //完成分享
+                    $.ajax({
+                        url: url+'tanabata/saveShareTanabata',
+                        type: 'POST',
+                        data: {
+                            userName: userName,
+                            token: token
+                        },
+                        contentType: 'application/x-www-form-urlencoded',
+                        datatype: 'json',
+                        success:function (res) {
+                            console.log(res);
+                            if(res.code == 200){
+                                //分享成功
+                                // mui.alert('分享成功！', '提示', function() {
+                                //
+                                // });
+                            } else {
+                                mui.toast(res.msg, {
+                                    duration: 'short',
+                                    type: 'div'
+                                });
+                            }
+                        },
+                        error:function () {
+                            mui.toast('加载失败！', {
+                                duration: 'short',
+                                type: 'div'
+                            })
+                        }
+                    });
+                }
+                window.location.reload();
+            });
+        }
+        testShare();
+        _hmt.push(['_trackEvent', "鹊桥相会页面", "方法二立即助力点击量",'立即助力']);
+    });
+
+    function compare_version(ver) {
+        var stand;
+        if (belong == '01') {
+            stand = UI;
+        }
+        if (belong == '02') {
+            stand = UA;
+        }
+        var stand_arr = stand.split(".");
+        var version_arr = ver.split(".");
+        if (version_arr.length < stand_arr.length) {
+            return false;
+        } else if (version_arr.length > stand_arr.length) {
+            return true;
+        } else {
+            for (var i = 0; i < stand_arr.length; i++) {
+                if (version_arr[i] < stand_arr[i]) {
+                    return false;
+                }
+                if (version_arr[i] > stand_arr[i]) {
+                    return true;
+                }
+            }
+        }
+        return true;
+    }
+    // if(compare_version(version)){
+    //     //去收款
+    //     mui.alert('现在去收款，即可领取喜鹊', '提示', function() {
+    //
+    //     });
+    // } else {
+    //     mui.alert('升级至最新版本即可分享', '提示', function() {
+    //         //跳转至下载页
+    //         mui.openWindow({
+    //             url: ''
+    //         });
+    //     });
+    // }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?72598f7255060827b247d74fd933eab8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
