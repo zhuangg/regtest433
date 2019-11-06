@@ -127,9 +127,12 @@
             $('input').blur();
             $('textarea').blur()
         });
-        document.body.addEventListener('blur',function(){
+        $('input').blur(function() {
+            document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
             window.scrollTo(0,0)
-        },true)
+        })
+        
         //地址选择
         var arr = [];
         mui.init();
@@ -168,7 +171,8 @@
                 // cityPicker3.show(function(items) {});
                 var showCityPickerButton = document.getElementById('showCityPicker3');
                 showCityPickerButton.addEventListener('tap', function(event) {
-
+                    $('input').blur();
+                    $('textarea').blur()
                     event.preventDefault();
                     cityPicker3.show(function(items) {
                         console.log(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
