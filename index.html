@@ -981,6 +981,12 @@
         //     // e.preventDefault();
         //     // e.stopPropagation();
         // });
+        
+        $('input').focus(function () {
+            $(".address").css('position','static')
+        }).blur(function () {
+            $(".address").css({'position':'fixed','top':'0'})
+        })
 
         //首页信息
         // $.ajax({
