@@ -123,6 +123,10 @@
 </html>
 <script>
     $(function () {
+        $('.address-btn').on('tap',function () {
+            $('input').blur();
+            $('textarea').blur()
+        })
         //地址选择
         var arr = [];
         mui.init();
