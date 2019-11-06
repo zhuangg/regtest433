@@ -27,12 +27,6 @@
         }
     </script>
     <style>
-        * {
-            touch-action: pan-y;
-        }
-        .over{
-            overflow-y: hidden;
-        }
         #an-hammer{
             width: 4rem;
             height: 4rem;
@@ -745,8 +739,9 @@
             border-radius: 3px;
             background: #CBCBCB;
         }
-        *{
-            touch-action: none;
+        
+        .btop{
+            top: 0;
         }
     </style>
 </head>
@@ -982,15 +977,15 @@
         //     // e.stopPropagation();
         // });
         
-        $('input').focus(function () {
-            $(".address").css('top','0')
+       $('input').focus(function () {
+            $(".address").addClass('btop')
         }).blur(function () {
-            $(".address").css({'top':'calc(50% - 7.925rem)'})
+            $(".address").removeClass('btop')
         });
         $('textarea').focus(function () {
-            $(".address").css('top','0')
+            $(".address").addClass('btop')
         }).blur(function () {
-            $(".address").css({'top':'calc(50% - 7.925rem)'})
+            $(".address").removeClass('btop')
         })
 
         //首页信息
