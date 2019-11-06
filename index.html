@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>狂欢双11，钜惠到底</title>
     <link rel="stylesheet" href="css/mui.min.css">
     <link rel="stylesheet" href="css/mui.picker.css">
     <link rel="stylesheet" href="css/mui.poppicker.css">
@@ -27,6 +27,369 @@
         }
     </script>
     <style>
+        * {
+            touch-action: pan-y;
+        }
+        .over{
+            overflow-y: hidden;
+        }
+        #an-hammer{
+            width: 4rem;
+            height: 4rem;
+            position: absolute;
+            top: 7rem;
+        }
+        #an-hammer image{
+            width: 50%;
+            height: 50%;
+        }
+        .hammer1{
+            /*left: 3rem;*/
+        }
+        .hammer2{
+            /*left: 8.8rem;*/
+        }
+        .hammer3{
+            left: 14.7rem;
+        }
+        .main{
+            background: #C00B2F;
+        }
+        .head{
+            width: 100%;
+            height: 20.75rem;
+            background: url("img/head.png");
+            background-size: 100% 100% !important;
+            position: relative;
+        }
+        .head-lang{
+            height: 22.2rem;
+            background: url("img/head2.png");
+        }
+        .egg-box{
+            width: 17.25rem;
+            height: 6.5rem;
+            margin: 0 auto;
+            display: flex;
+            padding-top: 8.3rem;
+        }
+        .egg-box div{
+            width: 5.75rem;
+            height: 6.5rem;
+            background: url("img/egg.png");
+            background-size: 100% 100%;
+        }
+        .play{
+            width: 14.75rem;
+            height: 3.55rem;
+            background: url("img/play.png");
+            background-size: 100% !important;
+            margin: 8rem auto 0;
+        }
+        .ch-rule{
+            width: 1.15rem;
+            height: 4.1rem;
+            background: rgba(0,0,0,.45);
+            border-radius:7px 0px 0px 7px;
+            color: #fff;
+            font-size: .7rem;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 3.3rem;
+            line-height: .9rem;
+            padding: .25rem 0;
+        }
+        .play-num{
+            width: 9.5rem;
+            height: 3.15rem;
+            background: url("img/qipao.png");
+            background-size: 100% 100%;
+            padding-top: .4rem;
+            position: absolute;
+            right: 1.65rem;
+            top: 13.8rem;
+        }
+        .play-num p{
+            color: #fff;
+            font-size: .65rem;
+            text-align: center;
+            line-height: .9rem;
+        }
+        .play-num span{
+            color: #FFB700;
+        }
+        .hammer{
+            width: 2.1rem;
+            height: 2.15rem;
+            background: url("img/hammer.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 7.25rem;
+            right: 5.6rem;
+            display: none;
+        }
+        .cd-prize{
+            width: 16.7rem;
+            height: 1.6rem;
+            line-height: 1.6rem;
+            background: #D4193F;
+            color: #fff;
+            font-size: .7rem;
+            text-align: center;
+            border-radius: .8rem;
+            margin: .35rem auto 0;
+            display: none;
+        }
+        /*奖品*/
+        .prize-con{
+            width: 100%;
+            height: 16.25rem;
+            background: url("img/prize.png");
+            background-size: 100% 100%;
+        }
+        /*分享好友*/
+        .share-prize{
+            width: 17.75rem;
+            height: 11.8rem;
+            background: #fff;
+            margin: 1.2rem auto 0;
+            border: 5px solid #D32D46;
+            position: relative;
+            border-radius: .85rem;
+            text-align: center;
+        }
+        .share-prize p{
+            color: #C00B2F;
+            font-size: .7rem;
+            margin-top: 1.2rem;
+        }
+        .share-prize img{
+            width: 100%;
+            height: 8.9rem;
+            margin: 0 auto;
+            position: absolute;
+            left: 0;
+            top: -1.3rem;
+        }
+        .share-prize .share-btn{
+            width: 14.3rem;
+            height: 2.2rem;
+            line-height: 2.2rem;
+            color: #fff;
+            font-size: 1rem;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+            position: absolute;
+            bottom: .7rem;
+            left: calc(50% - 7.15rem);
+        }
+        /*商品列表*/
+        .prize-box{
+            width: 17.75rem;
+            border: 5px solid #D32D46;
+            border-radius: .85rem;
+            background: #fff;
+            margin: 2rem auto 0;
+            position: relative;
+            padding: .75rem;
+        }
+        .prize-box .prize-box-tit{
+            width: 100%;
+            height: 1.95rem;
+            background: url("img/part4.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left: 0;
+            top: -1.3rem;
+        }
+        .prize-box .prize-box-tip{
+            color: #C00B2F;
+            font-size: .7rem;
+            line-height: 1rem;
+            text-align: center;
+            margin: .2rem 0 -.3rem;
+        }
+        .prize-box-center{
+            margin: 1rem auto 0;
+        }
+        .prize-box-hide{
+            width: 15.65rem;
+            height: 1.95rem;
+            line-height: 1.95rem;
+            text-align: center;
+            color: #C00B2F;
+            font-size: .75rem;
+            margin: 0 auto;
+            border: 1px solid #C00B2F;
+            border-radius: 1rem;
+        }
+        .prize-box-center ul{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .prize-box-center ul.hide{
+            max-height: 17rem;
+            overflow: hidden;
+            margin-bottom: .3rem;
+        }
+        .prize-box-center li{
+            width: 7.5rem;
+            height: 8.5rem;
+            text-align: center;
+        }
+        .prize-box-center li .prize-bg{
+            width: 7.5rem;
+            height: 3.35rem;
+            background-size: 100% 100% !important;
+            text-align: left;
+        }
+        .prize-box-center li .prize-bg span{
+            display: inline-block;
+            width: 3rem;
+            height: .9rem;
+            line-height: .9rem;
+            color: #fff;
+            font-size: .55rem;
+            text-align: center;
+            background: #FF5900;
+            border-radius: 5px 0 5px 0;
+            float: left;
+        }
+        .prize-box-center li del,.prize-box-center li p{
+            color: #333;
+            font-size: .7rem;
+            line-height: 1rem;
+        }
+        .prize-box-center li del{
+            margin-top: .5rem;
+            display: block;
+        }
+        .prize-box-center li p span{
+            color: #FE471F;
+            font-size: .7rem;
+        }
+        .prize-box-center li .rob{
+            width: 5.1rem;
+            height: 1.6rem;
+            line-height: 1.6rem;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+            color: #fff;
+            font-size: .75rem;
+            margin: .2rem auto 0;
+        }
+        .prize-box-center li .rob-end{
+            background: #AFAFAF;
+        }
+
+        .activity-tip{
+            color: #DAB2BA;
+            font-size: .55rem;
+            line-height: .8rem;
+            text-align: center;
+            margin: .55rem 0 .8rem;
+        }
+
+        .layer{
+            display: block;
+        }
+        /*规则*/
+        .rule{
+            width: 15rem;
+            height: 20.15rem;
+            background: #fff;
+            padding: 1.5rem .3rem .9rem .7rem;
+            border: .35rem solid #F0444F;
+            border-radius: .9rem;
+            z-index: 100;
+            position: fixed;
+            top: 4.65rem;
+            left: calc(50% - 7.5rem);
+            display: none;
+        }
+        .rule .tit{
+            width: 10.85rem;
+            height: 2.6rem;
+            background: url("img/rule_title.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: -1.6rem;
+            left: calc(50% - 5.425rem);
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            padding-right: 0.4rem;
+            text-align: justify;
+        }
+        .content h5,.content p{
+            color: #333;
+            font-size: .7rem;
+            line-height: 1rem;
+            margin: 0;
+        }
+        .content h5{
+            font-weight: 500;
+        }
+        .content .margin-t{
+            margin-top: .8rem;
+        }
+        .close{
+            width: 1.7rem;
+            height: 1.7rem;
+            background: url("img/icon_close.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left: calc(50% - .85rem);
+            bottom: -3.4rem;
+        }
+        /*分享*/
+        .share-box{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,.6);
+            z-index: 99;
+            display: none;
+        }
+        .share-box .share-layer{
+            position: fixed;
+            width: 100%;
+            height: calc(100% - 7rem);
+            top: 0;
+        }
+        .share-box .wechatbox{
+            position: fixed;
+            width: 100%;
+            height: 7rem;
+            bottom: 0;
+            background: #fff;
+            padding: 0 2.7rem;
+            display: flex;
+            justify-content: space-around;
+        }
+        .wechatbox div {
+            padding: 1rem 2rem;
+            margin: .6rem 0;
+        }
+        .wechatbox img {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: block;
+            margin: .1rem auto;
+        }
+        .wechatbox p {
+            font-size: .7rem;
+            color: #333;
+            text-align: center;
+        }
+        /*填写收货地址*/
         .address{
             width: 15.85rem;
             height: 20.9rem;
@@ -37,6 +400,7 @@
             top: 3rem;
             left: calc(50% - 7.925rem);
             padding: 1.25rem 1.3rem 1.5rem;
+            
         }
 
         .address p {
@@ -105,20 +469,437 @@
             background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
             border-radius: 1.1rem;
         }
+        .infobox a {
+            position: relative;
+            right: -12.4rem;
+            top: -2.4rem;
+            display: inline-block;
+            content: '';
+            width: .8rem;
+            height: .8rem;
+            background: url('img/icon_right.png');
+            background-size: 100% 100%;
+        }
+        /*分享礼包*/
+        .share-my-gift{
+            width: 15rem;
+            height: 16.95rem;
+            background: #fff;
+            border: .35rem solid #F0444F;
+            border-radius: .9rem;
+            z-index: 100;
+            position: fixed;
+            top: 4.65rem;
+            left: calc(50% - 7.5rem);
+            padding: 1.25rem .65rem 1.5rem;
+            display: none;
+        }
+        .share-my-gift > p{
+            color: #929292;
+            font-size: .75rem;
+            line-height: 1.05rem;
+            text-align: center;
+        }
+        .my-gift-tit{
+            width: 10.85rem;
+            height: 2.6rem;
+            background: url("img/dialog_title.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: -1.64rem;
+            left: calc(50% - 5.425rem);
+        }
+        .my-gift-con{
+            margin-top: 2rem;
+        }
+        .my-gift-con img{
+            width: 12.95rem;
+            height: 2.85rem;
+        }
+        .my-gift-con p{
+            text-align: center;
+            line-height: 1rem;
+            margin: .5rem auto 1.55rem;
+        }
+        .close-btn{
+            width: 10.75rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            text-align: center;
+            margin: 1.1rem auto 0;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+            color: #fff;
+            font-size: .9rem;
+        }
+
+        /*兑换、去收款 弹框*/
+        .pub-dialog{
+            width: 13.5rem;
+            height: 10.1rem;
+            background: #FFF8F9;
+            border-radius: .4rem;
+            position: fixed;
+            z-index: 100;
+            left: calc(50% - 6.75rem);
+            top: 8.3rem;
+            display: none;
+        }
+        .pub-dialog p{
+            color: #333;
+            font-size: .8rem;
+            line-height: 1.05rem;
+            text-align: center;
+            margin: 2.25rem auto 2rem;
+        }
+        .pub-dialog .close-btn{
+            width: 10.75rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+            color: #fff;
+            font-size: .9rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .pub-dialog .buy{
+            width: 10em;
+        }
+        /*获奖*/
+        .win-prizes{
+            width: 100%;
+            height: 18.7rem;
+            background: url("img/zhongjiang.png");
+            background-size: 100% 100%;
+            position: fixed;
+            z-index: 100;
+            top: 5.5rem;
+            display: none;
+        }
+        .win-prizes img{
+            width: 6.15rem;
+            height: 4.8rem;
+            margin: 2.65rem auto 0;
+            display: block;
+        }
+        .prize-name{
+            color: #BA4B04;
+            font-size: .7rem;
+            text-align: center;
+            line-height: 1rem;
+            margin: .1rem auto .85rem;
+        }
+        .prize-tip{
+            color: #BA4B04;
+            font-size: .6rem;
+            text-align: center;
+            line-height: .85rem;
+        }
+        /*未中奖*/
+        .no-award{
+            width: 14.5rem;
+            height: 18.7rem;
+            background: url("img/weizhongjiang.png");
+            background-size: 100% 100%;
+            position: fixed;
+            top: 5.5rem;
+            left: calc(50% - 7.25rem);
+            text-align: center;
+            display: none;
+        }
+        .editbtn{
+            width: 10.45rem;
+            height: 2.6rem;
+            background: url("img/btn_address.png");
+            background-size: 100% 100%;
+            margin: 2.5rem auto 0;
+        }
+        .no-award-tip{
+            color: #BA4B04;
+            font-size: .7rem;
+            margin-top: 3.6rem;
+        }
+        .no-award-tip span{
+            color: #BA4B04;
+            font-size: .8rem;
+            font-weight: 500;
+            margin-bottom: .3rem;
+            display: inline-block;
+        }
+        .again-try,.again-try-tip{
+            color: #BA4B04;
+            font-size: .7rem;
+            margin-top: 2.55rem;
+        }
+        .again-try i{
+            color: #FF2A35;
+            font-size: 1rem;
+        }
+        .again-try-btn{
+            width: 10.45rem;
+            height: 2.6rem;
+            background: url("img/btn_zaishiyici.png");
+            background-size: 100% 100%;
+            margin: 2.5rem auto 0;
+        }
+        .go-btn{
+            width: 10.45rem;
+            height: 2.6rem;
+            background: url("img/btn_qushoukuan.png");
+            background-size: 100% 100%;
+            margin: 2.5rem auto 0;
+        }
+        /*我的奖品列表*/
+        .my-prize-list{
+            width: 15rem;
+            /*height: 13.95rem;*/
+            position: fixed;
+            top: 6.25rem;
+            left: calc(50% - 7.5rem);
+            background: #fff;
+            padding-bottom: 1.5rem;
+            border: .35rem solid #F0444F;
+            border-radius: .9rem;
+            z-index: 100;
+            display: none;
+        }
+        .my-prize-list .list-tit{
+            width: 10.85rem;
+            height: 2.6rem;
+            background: url("img/my-list-tit.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: -1.6rem;
+            left: calc(50% - 5.425rem);
+        }
+        .my-prize-list ul{
+            padding: 1.3rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .my-prize-list ul li{
+            width: 5.8rem;
+            margin-bottom: .2rem;
+        }
+        .my-prize-list ul li img{
+            width: 3.25rem;
+            height: 2.3rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .my-prize-list ul li p{
+            color: #6B6B6B;
+            font-size: .6rem;
+            line-height: .85rem;
+        }
+        .my-prize-list ul li p i{
+            color: #FF6700;
+            font-size: .65rem;
+        }
+        .my-prize-list .res-btn{
+            width: 10.75rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+            text-align: center;
+            color: #fff;
+            font-size: .9rem;
+            margin: .1rem auto 0;
+        }
+        .my-prize-list .edit{
+            border: 1px solid #C00B2F;
+            color: #C00B2F;
+            background: #fff;
+            margin: .75rem auto 0;
+        }
+
+        /* 规则 scrollbar */
+        .content::-webkit-scrollbar-track-piece {
+            background-color: yellow !important
+        }
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .content::-webkit-scrollbar:vertical {
+            width: .4rem;
+        }
+        .content::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        .content::-webkit-scrollbar-track {
+            background: #EAEAEA;
+            border-radius: 3px;
+        }
+        .content::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background: #CBCBCB;
+        }
     </style>
 </head>
 <body>
-<div class="address">
-    <p class="tit">填写收货地址</p>
-    <div class="infobox">
-        <p><span>收货人</span><input type="text" placeholder="请输入收货人" maxlength="20" class="namevalue"></p>
-        <p><span>手机号</span><input type="number" placeholder="请输入收货人手机号码" maxlength="11" class="phonevalue" oninput="if(value.length>11)value=value.slice(0,11)"></p>
-        <p><span>省市区</span><input type="text" id="showCityPicker3" placeholder="请选择" class="addressvalue" readonly="readonly" style="width: 73%"> <a class="navigate-right"></a> </p>
-        <p><span style="float: left">地&nbsp;&nbsp;&nbsp;&nbsp;址</span><textarea name="" id="addr" cols="30" rows="10" placeholder="请输入具体收货地址" class="addvalue" maxlength="200"></textarea></p><div style="clear: both"></div><p></p>
+    <div class="main">
+        <div class="head">
+            <div class="egg-box">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="an-hammer" class="hammer1 hammer2 hammer3"></div>
+            <div class="play"></div>
+            <div class="hammer"></div>
+            <div class="play-num">
+                <p>您有 <span>0</span> 次机会</p>
+                <p>快去砸蛋赢取<span>华为P30 PRO</span></p>
+            </div>
+            <div class="ch-rule">查看规则</div>
+            <div class="cd-prize">查看我的奖品</div>
+        </div>
+        <div class="prize-con"></div>
+        <div class="share-prize">
+            <p>11.9-11.11 每日10点开始 前500名</p>
+            <img src="img/part3.png" alt="">
+            <div class="share-btn">分享并领取礼包</div>
+        </div>
+        <div class="prize-box">
+            <div class="prize-box-tit"></div>
+            <div class="prize-box-tip">双11当天 10点开启</div>
+            <div class="prize-box-center">
+                <ul class="hide">
+                    <li>
+                        <div class="prize-bg" style="background: url('img/exchange/1.png')">
+                            <span>剩余:10份</span>
+                        </div>
+                        <del>原价：1300积分</del>
+                        <p>现价：<span>143</span>积分</p>
+                        <div class="rob">立即抢购</div>
+                    </li>
+                    <li>
+                        <div class="prize-bg" style="background: url('img/exchange/1.png')">
+                            <span>剩余:10份</span>
+                        </div>
+                        <del>原价：1300积分</del>
+                        <p>现价：<span>143</span>积分</p>
+                        <div class="rob rob-end">已兑完</div>
+                    </li>
+                    <li>
+                        <div class="prize-bg" style="background: url('img/exchange/1.png')">
+                            <span>剩余:10份</span>
+                        </div>
+                        <del>原价：1300积分</del>
+                        <p>现价：<span>143</span>积分</p>
+                        <div class="rob">立即抢购</div>
+                    </li>
+                    <li>
+                        <div class="prize-bg" style="background: url('img/exchange/1.png')">
+                            <span>剩余:10份</span>
+                        </div>
+                        <del>原价：1300积分</del>
+                        <p>现价：<span>143</span>积分</p>
+                        <div class="rob">立即抢购</div>
+                    </li>
+                    <li>
+                        <div class="prize-bg" style="background: url('img/exchange/1.png')">
+                            <span>剩余:10份</span>
+                        </div>
+                        <del>原价：1300积分</del>
+                        <p>现价：<span>143</span>积分</p>
+                        <div class="rob">立即抢购</div>
+                    </li>
+                </ul>
+                <div class="prize-box-hide">点击查看更多商品</div>
+            </div>
+        </div>
+        <div class="activity-tip">本活动由星支付主办，与设备生产商Apple inc.公司无关</div>
     </div>
-    <div class="address-btn">确定</div>
-    <div class="close close-pub"></div>
-</div>
+    <div class="layer"></div>
+    <div class="rule">
+        <div class="tit"></div>
+        <div class="content">
+            <h5>刷卡狂欢，砸大奖</h5>
+            <p>活动期间，通过有效交易获得砸金蛋机会。</p>
+            <p>单笔每满4000元可获得一次砸金蛋机会。活动中获得的实体礼品，将在活动结束后的10个工作日内寄出。</p>
+            <h5 class="margin-t">邀请好友来领奖</h5>
+            <p>活动期间，将本活动分享给好友，在11.9-11.11 每日10:00限量领取500份分享礼，每人限领一次(抵扣券礼包)。</p>
+            <h5 class="margin-t">抢兑双11专享礼</h5>
+            <p>双11当天10:00，1.1折积分限量兑换商品100份 ，每人限领一次。</p>
+            <p class="margin-t">本活动由星支付官方主办，与苹果公司无关，如有疑问，请联系星支付唯一客服电话：400-069-6333。</p>
+            <p>关注【星支付运营中心】微信公众号，还可参与更多活动。</p>
+        </div>
+        <div class="close close-pub"></div>
+    </div>
+    <div class="share-box">
+        <div class="share-layer"></div>
+        <div class="wechatbox">
+            <div><img src="img/icon_wechat.png" alt=""><p>微信</p></div>
+            <div><img src="img/icon_pengyouquan.png" alt=""><p>朋友圈</p></div>
+        </div>
+    </div>
+    <div class="address">
+        <p class="tit">填写收货地址</p>
+        <div class="infobox">
+            <p><span>收货人</span><input type="text" placeholder="请输入收货人" maxlength="20" class="namevalue"></p>
+            <p><span>手机号</span><input type="number" placeholder="请输入收货人手机号码" maxlength="11" class="phonevalue" oninput="if(value.length>11)value=value.slice(0,11)"></p>
+            <p><span>省市区</span><input type="text" id="showCityPicker3" placeholder="请选择" class="addressvalue" readonly="readonly" style="width: 73%"> <a class="navigate-right"></a> </p>
+            <p><span style="float: left">地&nbsp;&nbsp;&nbsp;&nbsp;址</span><textarea name="" id="addr" cols="30" rows="10" placeholder="请输入具体收货地址" class="addvalue" maxlength="200"></textarea></p><div style="clear: both"></div><p></p>
+        </div>
+        <div class="address-btn">确定</div>
+        <div class="close close-pub"></div>
+    </div>
+    <div class="share-my-gift">
+        <div class="my-gift-tit"></div>
+        <div class="my-gift-con">
+            <img src="img/coupon.png" alt="">
+            <p>分享大礼包</p>
+        </div>
+        <p>奖品已发放至您的账户，可到“我 <br> 的账户”-“我的优惠券”查看</p>
+        <div class="close-btn close-pub">确定</div>
+        <div class="close close-pub"></div>
+    </div>
+    <div class="pub-dialog">
+        <p class="no-chance">您还没有砸金蛋机会， <br>现在收款即可获得砸金蛋机会</p>
+        <!--<p class="buy">确认使用22积分抢购0.5元手续费抵扣券</p>-->
+        <div class="go-do close-btn close-pub">去收款</div>
+        <!--<div class="res-btn close-btn close-pub">确定</div>-->
+        <div class="close close-pub"></div>
+    </div>
+    <div class="win-prizes">
+        <img src="img/jimi.png" alt="">
+        <p class="prize-name">极米投影仪</p>
+        <p class="prize-tip">奖品将在活动结束后的10个工作日内送出，<br>请注意填写收货地址，确保星仔可以寄送哦</p>
+        <div class="edit editbtn"></div>
+        <div class="close close-pub"></div>
+    </div>
+    <div class="no-award">
+        <p class="no-award-tip"><span>很遗憾~</span><br>您没有砸中任何东西</p>
+        <!--<p class="again-try">再试一次吧 <br>您还有<i>2</i>次机会</p>-->
+        <p class="again-try-tip">再接再厉<br>去收款获得更多砸金蛋机会！</p>
+        <!--<div class="again-try-btn"></div>-->
+        <div class="go-btn"></div>
+        <div class="close close-pub"></div>
+    </div>
+    <div class="my-prize-list">
+        <div class="list-tit"></div>
+        <ul>
+            <li>
+                <img src="img/m1.png" alt="">
+                <p>1元手续费折扣券<i> X1</i></p>
+            </li>
+            <li>
+                <img src="img/m3.png" alt="">
+                <p>1元手续费折扣券<i> X1</i></p>
+            </li>
+            <li>
+                <img src="img/m6.png" alt="">
+                <p>1元手续费折扣券<i> X1</i></p>
+            </li>
+        </ul>
+        <div class="res-btn close-pub">确定</div>
+        <div class="res-btn edit close-pub">填写收货地址</div>
+        <div class="close close-pub"></div>
+    </div>
 </body>
 </html>
 <script>
