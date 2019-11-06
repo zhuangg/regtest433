@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/mui.min.css">
+    <link rel="stylesheet" href="css/mui.picker.css">
+    <link rel="stylesheet" href="css/mui.poppicker.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.js"></script>
+    <script src="js/mui.poppicker.js"></script>
+    <script src="js/city.data.js"></script>
+    <script src="js/city.data-3.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(setRem());
+        $(window).resize(function(){
+            setRem()
+        });
+        function setRem(){
+            var w=parseFloat($('html').css('width'));
+            $('html').css('font-size',w/750*40+'px');
+        }
+    </script>
+    <style>
+        .address{
+            width: 15.85rem;
+            height: 20.9rem;
+            background: #FFF8F9;
+            border-radius: .7rem;
+            z-index: 100;
+            position: fixed;
+            top: 3rem;
+            left: calc(50% - 7.925rem);
+            padding: 1.25rem 1.3rem 1.5rem;
+        }
+
+        .address p {
+            margin: 0;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            border-bottom: .05rem solid #dcdcdc;
+        }
+        .address .tit {
+            font-size: 1.1rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            color: #C00B2F;
+            text-align: center;
+            border: 0;
+            margin-bottom: .35rem;
+        }
+
+        .infobox p:nth-of-type(4) {
+            border: 0;
+        }
+        .infobox p:last-of-type {
+            height: 1.75rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 0;
+        }
+        .address span {
+            font-size: .8rem;
+            color: #333;
+            display: inline-block;
+            width: 22%;
+        }
+        body .address input {
+            margin: 0;
+            padding: .4rem 0 .4rem .6rem;
+            width: 78%;
+            color: #333;
+            border: 0;
+            font-size: .75rem;
+            height: 2rem;
+            background: #FFF8F9;
+        }
+        body .address textarea {
+            width: 78%;
+            height: 4.6rem;
+            color: #333;
+            border: 0;
+            font-size: .75rem;
+            padding: .75rem 0 .4rem .6rem;
+            margin: 0;
+            background: #FFF8F9;
+            float: right;
+        }
+        .address input::-webkit-input-placeholder,.address textarea::-webkit-input-placeholder{
+            color: #818181;
+            font-size: .75rem;
+        }
+        .address .address-btn{
+            width: 10.75rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            text-align: center;
+            margin: 0 auto;
+            color: #fff;
+            font-size: .9rem;
+            background:linear-gradient(90deg,rgba(254,148,5,1) 0%,rgba(254,30,44,1) 100%);
+            border-radius: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="address">
+    <p class="tit">填写收货地址</p>
+    <div class="infobox">
+        <p><span>收货人</span><input type="text" placeholder="请输入收货人" maxlength="20" class="namevalue"></p>
+        <p><span>手机号</span><input type="number" placeholder="请输入收货人手机号码" maxlength="11" class="phonevalue" oninput="if(value.length>11)value=value.slice(0,11)"></p>
+        <p><span>省市区</span><input type="text" id="showCityPicker3" placeholder="请选择" class="addressvalue" readonly="readonly" style="width: 73%"> <a class="navigate-right"></a> </p>
+        <p><span style="float: left">地&nbsp;&nbsp;&nbsp;&nbsp;址</span><textarea name="" id="addr" cols="30" rows="10" placeholder="请输入具体收货地址" class="addvalue" maxlength="200"></textarea></p><div style="clear: both"></div><p></p>
+    </div>
+    <div class="address-btn">确定</div>
+    <div class="close close-pub"></div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        //地址选择
+        var arr = [];
+        mui.init();
+        mui.ready(function () {
+            // var picker = new mui.PopPicker();
+            var _getParam = function(obj, param) {
+                return obj[param] || '';
+            };
+            var cityPicker3 = new mui.PopPicker({layer: 3});
+            cityPicker3.setData(cityData3);
+            $('.address').show();
+            setTimeout(function () {
+                console.log(arr);
+                if(arr!=''){
+                    cityPicker3.pickers[0].setSelectedValue(arr[0]);
+                    var shi = cityPicker3.getSelectedItems()[0].children;
+                    var val_shi = arr[1];
+                    var val_xian = arr[2];
+                    for(var i=0;i<shi.length;i++) {
+                        if(shi[i].value==val_shi) {
+                            cityPicker3.pickers[1].setSelectedIndex(i);
+                            var xian=shi[i].children;
+                            for(var j=0;j<xian.length;j++) {
+                                if(xian[j].value==val_xian) {
+                                    cityPicker3.pickers[2].setSelectedIndex(j);
+                                }
+                                if(res.data.code != null){
+                                    arr = (res.data.code).split(',');
+                                }
+                            }
+                        }
+                    }
+                }
+                console.log(arr);
+                // console.log(cityData3);
+                // cityPicker3.show(function(items) {});
+                var showCityPickerButton = document.getElementById('showCityPicker3');
+                showCityPickerButton.addEventListener('tap', function(event) {
+
+                    event.preventDefault();
+                    cityPicker3.show(function(items) {
+                        console.log(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
+                        console.log(items);
+                        var arr1 = [];
+                        for(var k=0;k<items.length;k++){
+                            arr1.push((items[k].value).substr(0,2));
+                        }
+                        if(arr1[0] !== arr1[1] && arr1[0] !== arr1[2]){
+                            return false
+                        }
+                        addcode = items[0].value+','+items[1].value+','+items[2].value;
+                        console.log(addcode);
+                        document.getElementById('showCityPicker3').value = _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
+
+                        //返回 false 可以阻止选择框的关闭
+                        //return false;
+                    });
+                }, false);
+            },500)
+        });
+    })
+</script>
