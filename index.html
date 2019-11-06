@@ -985,7 +985,12 @@
         $('input').focus(function () {
             $(".address").css('top','0')
         }).blur(function () {
-            $(".address").css({'position':'fixed','top':'0'})
+            $(".address").css({'top':'calc(50% - 7.925rem)'})
+        });
+        $('textarea').focus(function () {
+            $(".address").css('top','0')
+        }).blur(function () {
+            $(".address").css({'top':'calc(50% - 7.925rem)'})
         })
 
         //首页信息
