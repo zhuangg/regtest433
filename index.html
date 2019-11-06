@@ -126,7 +126,10 @@
         $('.address-btn').on('tap',function () {
             $('input').blur();
             $('textarea').blur()
-        })
+        });
+        document.body.addEventListener('blur',function(){
+            window.scrollTo(0,0)
+        },true)
         //地址选择
         var arr = [];
         mui.init();
